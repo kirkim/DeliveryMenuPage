@@ -7,38 +7,35 @@
 
 import Foundation
 import RxDataSources
+import RxSwift
+import RxCocoa
+import UIKit
 
-struct DeliveryMenuViewModel {
-    let data: [DeliveryMenuSectionModel] = [
-        DeliveryMenuSectionModel.SectionBanner(items: [
-            BannerItem(data: BannerSources(bannerType: .basic,
-                                           sources: [
-                                            BannerSource(bannerImage: BeminCellImage.storedImage(name: "space_bread1"), presentVC: TestVC()),
-                                            BannerSource(bannerImage: BeminCellImage.storedImage(name: "space_bread2"), presentVC: TestVC()),
-                                            BannerSource(bannerImage: BeminCellImage.storedImage(name: "space_bread3"), presentVC: TestVC())
-                                           ]
-                                          ))]),
-        DeliveryMenuSectionModel.SectionSpecialMenu(items: [
-            SpecialMenuItem(title: "딱\n1인분", backgroundImage: ""),
-            SpecialMenuItem(title: "군침 싹!\n비빔밥", backgroundImage: ""),
-            SpecialMenuItem(title: "딸기\n홈 뷔패", backgroundImage: ""),
-            SpecialMenuItem(title: "떡볶이\n타임", backgroundImage: ""),
-            SpecialMenuItem(title: "special Menu five", backgroundImage: "")
-        ]),
-        DeliveryMenuSectionModel.SectionBasicMenu(items: [
-            BasicMenuItem(logoImage: "", menuType: .japanese),
-            BasicMenuItem(logoImage: "", menuType: .chinese),
-            BasicMenuItem(logoImage: "", menuType: .chicken),
-            BasicMenuItem(logoImage: "", menuType: .cafe),
-            BasicMenuItem(logoImage: "", menuType: .snackbar),
-            BasicMenuItem(logoImage: "", menuType: .soup),
-            BasicMenuItem(logoImage: "", menuType: .pizza),
-            BasicMenuItem(logoImage: "", menuType: .western),
-            BasicMenuItem(logoImage: "", menuType: .meat),
-            BasicMenuItem(logoImage: "", menuType: .asian),
-            BasicMenuItem(logoImage: "", menuType: .fastFood),
-        ])
-    ]
+class DeliveryMenuViewModel {
+    private let deliveryListViewModel: SelectStoreViewModel
+    private let disposeBag = DisposeBag()
+    
+    // ViewModel -> View
+    let data: [DeliveryMenuSectionModel]
+    
+    // View -> ViewModel
+    let itemSelected = PublishRelay<IndexPath>()
+    
+    // ViewModel -> View
+    let presentVC = PublishRelay<SelectStoreVC>()
+    
+    init(_ model: DeliveryMenuModel = DeliveryMenuModel()) {
+        self.data = model.data
+        self.deliveryListViewModel = SelectStoreViewModel(itemTitles: model.getBasicCellTitles())
+        
+        itemSelected.map { [weak self] indexPath in
+            let vc = SelectStoreVC(startPage: 1)
+            vc.bind((self?.deliveryListViewModel)!)
+            return vc
+        }
+        .bind(to: presentVC)
+        .disposed(by: disposeBag)
+    }
     
     func dataSource() -> RxCollectionViewSectionedReloadDataSource<DeliveryMenuSectionModel> {
         let dataSource = RxCollectionViewSectionedReloadDataSource<DeliveryMenuSectionModel>(

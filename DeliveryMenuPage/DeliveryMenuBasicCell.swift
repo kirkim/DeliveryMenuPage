@@ -25,10 +25,11 @@ class DeliveryMenuBasicCell: UICollectionViewCell, Reusable {
     
     func setData(data: BasicMenuItem) {
         self.titleLabel.text = data.menuType.title
+        self.thumbnailImageView.image = UIImage(named: data.logoImage)
     }
     
     private func attribute() {
-        self.backgroundColor = .systemMint
+//        self.backgroundColor = .
         self.titleLabel.numberOfLines = 1
         self.titleLabel.textAlignment = .center
         self.titleLabel.textColor = .black

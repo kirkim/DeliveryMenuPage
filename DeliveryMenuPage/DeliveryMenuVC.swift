@@ -35,6 +35,16 @@ class DeliveryMenuVC: UIViewController {
         Observable.just(viewModel.data)
             .bind(to: self.collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        self.collectionView.rx.itemSelected
+            .bind(to: viewModel.itemSelected)
+            .disposed(by: disposeBag)
+        
+        viewModel.presentVC
+            .bind { vc in
+                self.present(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func attribute() {
