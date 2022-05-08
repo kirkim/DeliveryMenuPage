@@ -12,12 +12,12 @@ import RxSwift
 class SortSlideBar: UICollectionView {
     private let disposeBag = DisposeBag()
     private var cellData: [String]?
+    private let startSort: SortSlideType = .basic
     
     init() {
         super.init(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         attribute()
         layout()
-        bind(SortSlideBarViewModel())
     }
     
     required init?(coder: NSCoder) {
@@ -29,12 +29,27 @@ class SortSlideBar: UICollectionView {
         Driver.just(viewModel.cellData)
             .drive(self.rx.items(cellIdentifier: "SortSlideCell", cellType: SortSlideCell.self)) { row, data, cell in
                 cell.setData(title: data)
-                cell.layer.cornerRadius = 15
-//                if (row == self.startPage) {
-//                    cell.backgroundColor = .systemMint
-//                    cell.titleLabel.textColor = .white
-//                    self.scrollToItem(at: IndexPath(row: row, section: 0), at: .centeredHorizontally, animated: true)
-//                }
+                if (SortSlideType.allCases[row] == self.startSort) {
+                    cell.isValid(true)
+                    self.scrollToItem(at: IndexPath(row: row, section: 0), at: .centeredHorizontally, animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        self.rx.itemSelected
+            .map { $0.row }
+            .bind(to: viewModel.itemSelected)
+            .disposed(by: disposeBag)
+        
+        viewModel.slotChanged
+            .bind { [weak self] row in
+                self?.visibleCells.forEach { cell in
+                    (cell as? SortSlideCell)?.isValid(false)
+                }
+                let indexPath = IndexPath(row: row, section: 0)
+                guard let cell = self?.cellForItem(at: indexPath) as? SortSlideCell else { return }
+                cell.isValid(true)
+                self?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             }
             .disposed(by: disposeBag)
     }
@@ -42,6 +57,8 @@ class SortSlideBar: UICollectionView {
     private func attribute() {
         self.register(SortSlideCell.self, forCellWithReuseIdentifier: "SortSlideCell")
         self.delegate = self
+        self.showsHorizontalScrollIndicator = false
+        self.backgroundColor = .yellow
     }
     
     private func layout() {
@@ -54,8 +71,7 @@ class SortSlideBar: UICollectionView {
     }
 }
 
-
-//MARK: - TopSlideBar: UICollectionViewDelegateFlowLayout
+//MARK: - SortSlideBar: UICollectionViewDelegateFlowLayout
 extension SortSlideBar: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let slot = self.cellData?[indexPath.row] else { return CGSize.zero }

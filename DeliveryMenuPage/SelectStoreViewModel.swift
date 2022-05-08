@@ -6,12 +6,22 @@
 //
 
 import Foundation
+import RxSwift
 
 struct SelectStoreViewModel {
-    let topSlideBarViewModel: TopSlideBarViewModel
+    let topSlideBarViewModel = TopSlideBarViewModel()
+    let sortSlideBarViewModel = SortSlideBarViewModel()
+    let containerListViewModel = ContainerStoreListViewModel()
+    private let disposeBag = DisposeBag()
     
-    init(itemTitles: [String]) {
-        self.topSlideBarViewModel = TopSlideBarViewModel(itemTitles: itemTitles)
+    init() {
+        topSlideBarViewModel.slotChanged
+            .bind(to: containerListViewModel.slotChanged)
+            .disposed(by: disposeBag)
+        
+        containerListViewModel.scrollPaged
+            .bind(to: topSlideBarViewModel.scrollPaged)
+            .disposed(by: disposeBag)
     }
     
 }

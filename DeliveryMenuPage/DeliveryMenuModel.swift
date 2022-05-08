@@ -25,21 +25,14 @@ struct DeliveryMenuModel {
         SpecialMenuItem(title: "special Menu five", backgroundImage: "")
     ])
     
-    let basicCellData = DeliveryMenuSectionModel.SectionBasicMenu(items: [
-        BasicMenuItem(logoImage: "japanese", menuType: .japanese),
-        BasicMenuItem(logoImage: "chinese", menuType: .chinese),
-        BasicMenuItem(logoImage: "chicken", menuType: .chicken),
-        BasicMenuItem(logoImage: "cafe", menuType: .cafe),
-        BasicMenuItem(logoImage: "snackbar", menuType: .snackbar),
-        BasicMenuItem(logoImage: "soup", menuType: .soup),
-        BasicMenuItem(logoImage: "pizza", menuType: .pizza),
-        BasicMenuItem(logoImage: "western", menuType: .western),
-        BasicMenuItem(logoImage: "meat", menuType: .meat),
-        BasicMenuItem(logoImage: "asian", menuType: .asian),
-        BasicMenuItem(logoImage: "fastfood", menuType: .fastFood),
-    ])
+    let basicCellData: DeliveryMenuSectionModel
     
     init() {
+        let basicItems = StoreType.allCases.map { type in
+            return BasicMenuItem(logoImage: type.logoImage, menuType: type)
+        }
+        basicCellData = DeliveryMenuSectionModel.SectionBasicMenu(items: basicItems)
+        
         [bannerCellData, specialCellData, basicCellData].forEach {
             self.data.append($0)
         }

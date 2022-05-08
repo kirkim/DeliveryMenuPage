@@ -21,9 +21,25 @@ class TopSlideCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        self.backgroundColor = .clear
+        self.titleLabel.textColor = .black
+    }
+    
     private func attribute() {
         self.titleLabel.textAlignment = .center
         self.titleLabel.textColor = .black
+        self.layer.cornerRadius = self.frame.height/2
+    }
+    
+    func isValid(_ isValid: Bool) {
+        if (isValid) {
+            self.backgroundColor = .systemMint
+            self.titleLabel.textColor = .white
+        } else {
+            self.backgroundColor = .clear
+            self.titleLabel.textColor = .black
+        }
     }
     
     private func layout() {

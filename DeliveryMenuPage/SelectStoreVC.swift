@@ -11,9 +11,11 @@ import SnapKit
 class SelectStoreVC: UIViewController {
     private let topBar: TopSlideBar
     private let sortBar = SortSlideBar()
+    private let containerListView: ContainerStoreListView
     
     init(startPage: Int) {
         self.topBar = TopSlideBar(startPage: startPage)
+        self.containerListView = ContainerStoreListView(startPage: startPage)
         super.init(nibName: nil, bundle: nil)
         attribute()
         layout()
@@ -25,20 +27,22 @@ class SelectStoreVC: UIViewController {
     
     func bind(_ viewModel: SelectStoreViewModel) {
         self.topBar.bind(viewModel.topSlideBarViewModel)
+        self.sortBar.bind(viewModel.sortSlideBarViewModel)
+        self.containerListView.bind(viewModel.containerListViewModel)
     }
     
     private func attribute() {
-        topBar.backgroundColor = .brown
-        
+        self.view.backgroundColor = .white
     }
     
     private func layout() {
-        [topBar, sortBar].forEach {
+        [containerListView, topBar, sortBar].forEach {
             self.view.addSubview($0)
         }
         
         topBar.snp.makeConstraints {
-            $0.leading.top.trailing.equalToSuperview()
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(50)
         }
         
@@ -46,6 +50,12 @@ class SelectStoreVC: UIViewController {
             $0.top.equalTo(topBar.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(50)
+        }
+        
+        containerListView.snp.makeConstraints {
+            $0.top.equalTo(sortBar.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
 }

@@ -12,7 +12,7 @@ import RxCocoa
 import UIKit
 
 class DeliveryMenuViewModel {
-    private let deliveryListViewModel: SelectStoreViewModel
+    private let deliveryListViewModel = SelectStoreViewModel()
     private let disposeBag = DisposeBag()
     
     // ViewModel -> View
@@ -26,10 +26,9 @@ class DeliveryMenuViewModel {
     
     init(_ model: DeliveryMenuModel = DeliveryMenuModel()) {
         self.data = model.data
-        self.deliveryListViewModel = SelectStoreViewModel(itemTitles: model.getBasicCellTitles())
         
         itemSelected.map { [weak self] indexPath in
-            let vc = SelectStoreVC(startPage: 1)
+            let vc = SelectStoreVC(startPage: indexPath.row)
             vc.bind((self?.deliveryListViewModel)!)
             return vc
         }

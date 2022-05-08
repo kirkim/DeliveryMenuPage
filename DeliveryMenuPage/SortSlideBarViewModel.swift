@@ -6,12 +6,22 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 struct SortSlideBarViewModel {
+    private let disposeBag = DisposeBag()
     let cellData: [String]
     let model = SortSlideBarModel()
     
+    // View -> ViewModel
+    let itemSelected = PublishRelay<Int>()
+    
+    // ViewModel -> View
+    let slotChanged = PublishRelay<Int>()
+    
     init() {
         cellData = model.cellData
+        itemSelected.bind(to: slotChanged).disposed(by: disposeBag)
     }
 }

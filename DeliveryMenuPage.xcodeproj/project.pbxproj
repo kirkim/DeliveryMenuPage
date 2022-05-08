@@ -12,6 +12,20 @@
 		FE8B07E72826AB940046D82F /* SortSlideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8B07E62826AB940046D82F /* SortSlideType.swift */; };
 		FE8B07E92826ABD40046D82F /* SortSlideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8B07E82826ABD40046D82F /* SortSlideBarModel.swift */; };
 		FE8B07EC2826AD400046D82F /* SortSlideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8B07EB2826AD400046D82F /* SortSlideCell.swift */; };
+		FE8B07EF2826C0150046D82F /* TopSlideBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8B07EE2826C0150046D82F /* TopSlideBarModel.swift */; };
+		FE8B07F22826C3C90046D82F /* StoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8B07F12826C3C90046D82F /* StoreListView.swift */; };
+		FE997C1F2827EB88009F24CF /* Int+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE997C1E2827EB88009F24CF /* Int+extension.swift */; };
+		FE997C212827ECE5009F24CF /* StoreListSectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE997C202827ECE5009F24CF /* StoreListSectionManager.swift */; };
+		FE9F0C6B28281275002293B6 /* ContainerSectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9F0C6A28281275002293B6 /* ContainerSectionManager.swift */; };
+		FEBFE073282758BE007BC64D /* StoreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFE072282758BE007BC64D /* StoreListViewModel.swift */; };
+		FEBFE0762827592E007BC64D /* StoreListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFE0752827592E007BC64D /* StoreListCell.swift */; };
+		FEBFE07928275E85007BC64D /* StoreListSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFE07828275E85007BC64D /* StoreListSectionModel.swift */; };
+		FEBFE07B28276143007BC64D /* StoreListHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFE07A28276143007BC64D /* StoreListHttpManager.swift */; };
+		FEBFE07D28276184007BC64D /* DeliveryHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFE07C28276184007BC64D /* DeliveryHttpManager.swift */; };
+		FEBFE0802827619D007BC64D /* RxHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFE07F2827619D007BC64D /* RxHttpClient.swift */; };
+		FEBFE08328277A51007BC64D /* ContainerStoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFE08228277A51007BC64D /* ContainerStoreListView.swift */; };
+		FEBFE08528277A95007BC64D /* ContainerStoreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFE08428277A95007BC64D /* ContainerStoreListViewModel.swift */; };
+		FEBFE08928277D11007BC64D /* ContainerStoreListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFE08828277D11007BC64D /* ContainerStoreListViewCell.swift */; };
 		FEF3132D2824B94C004F764E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF3132C2824B94C004F764E /* AppDelegate.swift */; };
 		FEF3132F2824B94C004F764E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF3132E2824B94C004F764E /* SceneDelegate.swift */; };
 		FEF313362824B94C004F764E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEF313352824B94C004F764E /* Assets.xcassets */; };
@@ -56,6 +70,20 @@
 		FE8B07E62826AB940046D82F /* SortSlideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSlideType.swift; sourceTree = "<group>"; };
 		FE8B07E82826ABD40046D82F /* SortSlideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSlideBarModel.swift; sourceTree = "<group>"; };
 		FE8B07EB2826AD400046D82F /* SortSlideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSlideCell.swift; sourceTree = "<group>"; };
+		FE8B07EE2826C0150046D82F /* TopSlideBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSlideBarModel.swift; sourceTree = "<group>"; };
+		FE8B07F12826C3C90046D82F /* StoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListView.swift; sourceTree = "<group>"; };
+		FE997C1E2827EB88009F24CF /* Int+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+extension.swift"; sourceTree = "<group>"; };
+		FE997C202827ECE5009F24CF /* StoreListSectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListSectionManager.swift; sourceTree = "<group>"; };
+		FE9F0C6A28281275002293B6 /* ContainerSectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSectionManager.swift; sourceTree = "<group>"; };
+		FEBFE072282758BE007BC64D /* StoreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewModel.swift; sourceTree = "<group>"; };
+		FEBFE0752827592E007BC64D /* StoreListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListCell.swift; sourceTree = "<group>"; };
+		FEBFE07828275E85007BC64D /* StoreListSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListSectionModel.swift; sourceTree = "<group>"; };
+		FEBFE07A28276143007BC64D /* StoreListHttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListHttpManager.swift; sourceTree = "<group>"; };
+		FEBFE07C28276184007BC64D /* DeliveryHttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryHttpManager.swift; sourceTree = "<group>"; };
+		FEBFE07F2827619D007BC64D /* RxHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxHttpClient.swift; sourceTree = "<group>"; };
+		FEBFE08228277A51007BC64D /* ContainerStoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerStoreListView.swift; sourceTree = "<group>"; };
+		FEBFE08428277A95007BC64D /* ContainerStoreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerStoreListViewModel.swift; sourceTree = "<group>"; };
+		FEBFE08828277D11007BC64D /* ContainerStoreListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerStoreListViewCell.swift; sourceTree = "<group>"; };
 		FEF313292824B94C004F764E /* DeliveryMenuPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeliveryMenuPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEF3132C2824B94C004F764E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEF3132E2824B94C004F764E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +140,7 @@
 			children = (
 				FEF5D0242825127A0058D52C /* TopSlideBar.swift */,
 				FEF5D026282512E90058D52C /* TopSlideBarViewModel.swift */,
+				FE8B07EE2826C0150046D82F /* TopSlideBarModel.swift */,
 				FEF5D02C2825667C0058D52C /* Cell */,
 			);
 			name = TopSlideBar;
@@ -123,7 +152,6 @@
 				FE8B07E12826A3950046D82F /* SortSlideBar.swift */,
 				FE8B07E32826AAB10046D82F /* SortSlideBarViewModel.swift */,
 				FE8B07E82826ABD40046D82F /* SortSlideBarModel.swift */,
-				FE8B07E62826AB940046D82F /* SortSlideType.swift */,
 				FE8B07EA2826AD310046D82F /* Cell */,
 			);
 			name = SortSlideBar;
@@ -135,6 +163,80 @@
 				FE8B07EB2826AD400046D82F /* SortSlideCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		FE8B07F02826C3510046D82F /* StoreListView */ = {
+			isa = PBXGroup;
+			children = (
+				FE8B07F12826C3C90046D82F /* StoreListView.swift */,
+				FEBFE072282758BE007BC64D /* StoreListViewModel.swift */,
+				FE997C202827ECE5009F24CF /* StoreListSectionManager.swift */,
+				FEBFE07728275E6A007BC64D /* SectionModel */,
+				FEBFE07428275921007BC64D /* Cell */,
+			);
+			name = StoreListView;
+			sourceTree = "<group>";
+		};
+		FE997C1D2827EB88009F24CF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FE997C1E2827EB88009F24CF /* Int+extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FEBFE07428275921007BC64D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FEBFE0752827592E007BC64D /* StoreListCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		FEBFE07728275E6A007BC64D /* SectionModel */ = {
+			isa = PBXGroup;
+			children = (
+				FEBFE07828275E85007BC64D /* StoreListSectionModel.swift */,
+			);
+			name = SectionModel;
+			sourceTree = "<group>";
+		};
+		FEBFE07E2827618C007BC64D /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				FEBFE07F2827619D007BC64D /* RxHttpClient.swift */,
+				FEBFE07C28276184007BC64D /* DeliveryHttpManager.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		FEBFE08128277A14007BC64D /* ContainerStoreListView */ = {
+			isa = PBXGroup;
+			children = (
+				FEBFE08228277A51007BC64D /* ContainerStoreListView.swift */,
+				FEBFE08428277A95007BC64D /* ContainerStoreListViewModel.swift */,
+				FEBFE07A28276143007BC64D /* StoreListHttpManager.swift */,
+				FE9F0C6A28281275002293B6 /* ContainerSectionManager.swift */,
+				FEBFE08628277CDD007BC64D /* Cell */,
+			);
+			name = ContainerStoreListView;
+			sourceTree = "<group>";
+		};
+		FEBFE08628277CDD007BC64D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FEBFE08828277D11007BC64D /* ContainerStoreListViewCell.swift */,
+				FEBFE08728277CF0007BC64D /* SubComponents */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		FEBFE08728277CF0007BC64D /* SubComponents */ = {
+			isa = PBXGroup;
+			children = (
+				FE8B07F02826C3510046D82F /* StoreListView */,
+			);
+			name = SubComponents;
 			sourceTree = "<group>";
 		};
 		FEF313202824B94C004F764E = {
@@ -158,6 +260,8 @@
 			children = (
 				FEF313502824BAC9004F764E /* BeminBannerView */,
 				FEF313402824B995004F764E /* MainPage */,
+				FE997C1D2827EB88009F24CF /* Extension */,
+				FEBFE07E2827618C007BC64D /* Http */,
 				FEF3132C2824B94C004F764E /* AppDelegate.swift */,
 				FEF3132E2824B94C004F764E /* SceneDelegate.swift */,
 				FEF313352824B94C004F764E /* Assets.xcassets */,
@@ -195,8 +299,8 @@
 		FEF313512824BAC9004F764E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				FEF313522824BAC9004F764E /* BeminBannerViewModel.swift */,
 				FEF313532824BAC9004F764E /* BeminBannerView.swift */,
+				FEF313522824BAC9004F764E /* BeminBannerViewModel.swift */,
 				FEF313542824BAC9004F764E /* SubComponents */,
 			);
 			path = Presentation;
@@ -225,8 +329,8 @@
 			isa = PBXGroup;
 			children = (
 				FEF313592824BAC9004F764E /* TotalBannerListView.swift */,
-				FEF3135A2824BAC9004F764E /* Cell */,
 				FEF3135C2824BAC9004F764E /* TotalBannerListViewModel.swift */,
+				FEF3135A2824BAC9004F764E /* Cell */,
 			);
 			path = TotalBannerListView;
 			sourceTree = "<group>";
@@ -242,9 +346,9 @@
 		FEF3135D2824BAC9004F764E /* BannerList */ = {
 			isa = PBXGroup;
 			children = (
+				FEF313612824BAC9004F764E /* BeminBannerListView.swift */,
 				FEF3135E2824BAC9004F764E /* BeminBannerListViewModel.swift */,
 				FEF3135F2824BAC9004F764E /* Cell */,
-				FEF313612824BAC9004F764E /* BeminBannerListView.swift */,
 			);
 			path = BannerList;
 			sourceTree = "<group>";
@@ -287,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				FEF3137A2824C170004F764E /* StoreType.swift */,
+				FE8B07E62826AB940046D82F /* SortSlideType.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -304,6 +409,7 @@
 		FEF5D023282512640058D52C /* SubComponents */ = {
 			isa = PBXGroup;
 			children = (
+				FEBFE08128277A14007BC64D /* ContainerStoreListView */,
 				FE8B07E02826A3790046D82F /* SortSlideBar */,
 				FE8B07DF2826A36C0046D82F /* TopSlideBar */,
 			);
@@ -407,9 +513,11 @@
 				FE8B07EC2826AD400046D82F /* SortSlideCell.swift in Sources */,
 				FEF5D022282511F50058D52C /* SelectStoreVC.swift in Sources */,
 				FEF313782824BFAC004F764E /* DeliveryMenuSectionModel.swift in Sources */,
+				FEBFE07B28276143007BC64D /* StoreListHttpManager.swift in Sources */,
 				FEF3137B2824C170004F764E /* StoreType.swift in Sources */,
 				FEF313672824BAC9004F764E /* BeminBannerButton.swift in Sources */,
 				FEF3136B2824BAC9004F764E /* BeminBannerListViewModel.swift in Sources */,
+				FEBFE0802827619D007BC64D /* RxHttpClient.swift in Sources */,
 				FEF313652824BAC9004F764E /* BeminBannerView.swift in Sources */,
 				FEF313422824B9C5004F764E /* DeliveryMenuVC.swift in Sources */,
 				FEF5D02E282566A10058D52C /* TopSlideCell.swift in Sources */,
@@ -417,20 +525,32 @@
 				FEF3136E2824BAC9004F764E /* BannerSources.swift in Sources */,
 				FE8B07E42826AAB10046D82F /* SortSlideBarViewModel.swift in Sources */,
 				FE8B07E22826A3950046D82F /* SortSlideBar.swift in Sources */,
+				FE997C1F2827EB88009F24CF /* Int+extension.swift in Sources */,
 				FEF3137D2824C3DC004F764E /* DeliveryMenuBannerCell.swift in Sources */,
+				FEBFE07D28276184007BC64D /* DeliveryHttpManager.swift in Sources */,
 				FEF313842824C99A004F764E /* DeliveryMenuBasicCell.swift in Sources */,
+				FE9F0C6B28281275002293B6 /* ContainerSectionManager.swift in Sources */,
 				FEF313702824BB23004F764E /* DeliveryMenuViewModel.swift in Sources */,
 				FE8B07E92826ABD40046D82F /* SortSlideBarModel.swift in Sources */,
+				FEBFE07928275E85007BC64D /* StoreListSectionModel.swift in Sources */,
 				FEF5D02928255B1C0058D52C /* SelectStoreViewModel.swift in Sources */,
+				FEBFE08928277D11007BC64D /* ContainerStoreListViewCell.swift in Sources */,
 				FEF5D0252825127A0058D52C /* TopSlideBar.swift in Sources */,
 				FEF313722824BBBE004F764E /* DeliveryMenuSectionManager.swift in Sources */,
 				FEF3132D2824B94C004F764E /* AppDelegate.swift in Sources */,
+				FE8B07F22826C3C90046D82F /* StoreListView.swift in Sources */,
 				FEF313682824BAC9004F764E /* TotalBannerListView.swift in Sources */,
+				FE997C212827ECE5009F24CF /* StoreListSectionManager.swift in Sources */,
+				FEBFE073282758BE007BC64D /* StoreListViewModel.swift in Sources */,
 				FEF313692824BAC9004F764E /* TotalBannerListCell.swift in Sources */,
 				FEF313642824BAC9004F764E /* BeminBannerViewModel.swift in Sources */,
+				FEBFE0762827592E007BC64D /* StoreListCell.swift in Sources */,
 				FEF5D02B28255D7D0058D52C /* DeliveryMenuModel.swift in Sources */,
 				FEF3136C2824BAC9004F764E /* BeminBannerCell.swift in Sources */,
 				FEF3132F2824B94C004F764E /* SceneDelegate.swift in Sources */,
+				FEBFE08328277A51007BC64D /* ContainerStoreListView.swift in Sources */,
+				FE8B07EF2826C0150046D82F /* TopSlideBarModel.swift in Sources */,
+				FEBFE08528277A95007BC64D /* ContainerStoreListViewModel.swift in Sources */,
 				FE8B07E72826AB940046D82F /* SortSlideType.swift in Sources */,
 				FEF313822824C848004F764E /* DeliveryMenuSpecialCell.swift in Sources */,
 				FEF313862824CC16004F764E /* TestVC.swift in Sources */,

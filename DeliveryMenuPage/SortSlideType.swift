@@ -12,6 +12,10 @@ enum SortSlideType: CaseIterable {
     case lowDeliveryPrice
     case basic
     case highOrder
+    case highRating
+    case nearest
+    case muchlikes
+    
     var title: String {
         switch self {
         case .fastDeliveryTime:
@@ -22,6 +26,12 @@ enum SortSlideType: CaseIterable {
             return "기본순"
         case .highOrder:
             return "주문 많은 순"
+        case .highRating:
+            return "별점 높은 순"
+        case .nearest:
+            return "가까운 순"
+        case .muchlikes:
+            return "찜 많은 순"
         }
     }
 }

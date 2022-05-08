@@ -6,11 +6,27 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 struct TopSlideBarViewModel {
-    let cellData: [String]
+    private let disposeBag = DisposeBag()
+    let cellData: [StoreType]
+    let model = TopSlideBarModel()
     
-    init(itemTitles: [String]) {
-        self.cellData = itemTitles
+    // View -> ViewModel
+    let itemSelected = PublishRelay<Int>()
+    
+    // ViewModel -> View & ContainerStoreListViewModel
+    let slotChanged = PublishRelay<Int>()
+    
+    // ContainerStoreListViewModel -> view
+    let scrollPaged = PublishRelay<Int>()
+    
+    init() {
+        cellData = StoreType.allCases
+//        self.cellData = model.cellData
+        itemSelected.bind(to: slotChanged).disposed(by: disposeBag)
+        scrollPaged.bind(to: slotChanged).disposed(by: disposeBag)
     }
 }

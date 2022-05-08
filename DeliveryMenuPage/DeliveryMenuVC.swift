@@ -17,13 +17,12 @@ class DeliveryMenuVC: UIViewController {
     private let disposeBag = DisposeBag()
     
     //temp
-    let viewModel = DeliveryMenuViewModel()
+//    let viewModel = DeliveryMenuViewModel()
     
     init() {
         super.init(nibName: nil, bundle: nil)
         attribute()
         layout()
-        bind(viewModel)
     }
     
     required init?(coder: NSCoder) {
@@ -42,12 +41,16 @@ class DeliveryMenuVC: UIViewController {
         
         viewModel.presentVC
             .bind { vc in
-                self.present(vc, animated: true)
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+//
             }
             .disposed(by: disposeBag)
     }
     
     private func attribute() {
+        self.view.backgroundColor = .white
         self.collectionView.collectionViewLayout = sectionManager.createLayout()
         self.collectionView.register(cellType: DeliveryMenuBannerCell.self)
         self.collectionView.register(cellType: DeliveryMenuSpecialCell.self)

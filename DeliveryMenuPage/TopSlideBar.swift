@@ -11,8 +11,9 @@ import RxSwift
 
 class TopSlideBar: UICollectionView {
     private let disposeBag = DisposeBag()
-    private var cellData: [String]?
+    private var cellData: [StoreType]?
     private let startPage: Int
+    private var flag:Bool = false
     
     init(startPage: Int) {
         self.startPage = startPage
@@ -28,21 +29,41 @@ class TopSlideBar: UICollectionView {
     func bind(_ viewModel: TopSlideBarViewModel) {
         self.cellData = viewModel.cellData
         Driver.just(viewModel.cellData)
-            .drive(self.rx.items(cellIdentifier: "TopSlideCell", cellType: TopSlideCell.self)) { row, data, cell in
-                cell.setData(title: data)
-                cell.layer.cornerRadius = 15
-//                if (row == self.startPage) {
-//                    cell.backgroundColor = .systemMint
-//                    cell.titleLabel.textColor = .white
-//                    self.scrollToItem(at: IndexPath(row: row, section: 0), at: .centeredHorizontally, animated: true)
-//                }
+            .drive(self.rx.items(cellIdentifier: "TopSlideCell", cellType: TopSlideCell.self)) { [weak self] row, data, cell in
+                cell.setData(title: data.title)
+                if (row == self?.startPage && self?.flag == false) {
+                    self?.flag = true
+                    cell.isValid(true)
+                    self?.scrollToItem(at: IndexPath(row: row, section: 0), at: .centeredHorizontally, animated: true)
+                }
             }
             .disposed(by: disposeBag)
+        
+        self.rx.itemSelected
+            .map { $0.row }
+            .distinctUntilChanged()
+            .bind(to: viewModel.itemSelected)
+            .disposed(by: disposeBag)
+        
+        viewModel.slotChanged
+            .bind { [weak self] row in
+                self?.visibleCells.forEach { cell in
+                    (cell as? TopSlideCell)?.isValid(false)
+                }
+                let indexPath = IndexPath(row: row, section: 0)
+                guard let cell = self?.cellForItem(at: indexPath) as? TopSlideCell else { return }
+                cell.isValid(true)
+                self?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            }
+            .disposed(by: disposeBag)
+
     }
     
     private func attribute() {
+        self.backgroundColor = .brown
         self.register(TopSlideCell.self, forCellWithReuseIdentifier: "TopSlideCell")
         self.delegate = self
+        self.showsHorizontalScrollIndicator = false
     }
     
     private func layout() {
@@ -60,7 +81,7 @@ class TopSlideBar: UICollectionView {
 extension TopSlideBar: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let slot = self.cellData?[indexPath.row] else { return CGSize.zero }
-        var length = slot.size(withAttributes: nil).width*2 + 20
+        var length = slot.title.size(withAttributes: nil).width*2 + 20
         length = length > 150 ? 150 : length
         return CGSize(width: length , height: CGFloat(self.frame.height)-20)
     }

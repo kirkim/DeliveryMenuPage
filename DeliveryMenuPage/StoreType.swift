@@ -7,19 +7,19 @@
 
 import Foundation
 
-enum StoreType {
-    case cafe
-    case korean
-    case japanese
-    case chinese
-    case soup
-    case fastFood
-    case chicken
-    case pizza
-    case asian
-    case western
-    case meat
-    case snackbar
+enum StoreType: String, CaseIterable, Decodable {
+    case cafe = "cafe"
+    case korean = "korean"
+    case japanese = "japanese"
+    case chinese = "chinese"
+    case soup = "soup"
+    case fastfood = "fastfood"
+    case chicken = "chicken"
+    case pizza = "pizza"
+    case asian = "asian"
+    case western = "western"
+    case meat = "meat"
+    case snackbar = "snackbar"
     
     var title:String {
         switch self {
@@ -33,7 +33,7 @@ enum StoreType {
             return "중식"
         case .soup:
             return "찜∙탕∙찌개"
-        case .fastFood:
+        case .fastfood:
             return "패스트푸드"
         case .chicken:
             return "치킨"
@@ -47,6 +47,35 @@ enum StoreType {
             return "고기∙구이"
         case .snackbar:
             return "분식"
+        }
+    }
+    
+    var logoImage:String{
+        switch self {
+        case .cafe:
+            return "cafe"
+        case .korean:
+            return "korean"
+        case .japanese:
+            return "japanese"
+        case .chinese:
+            return "chinese"
+        case .soup:
+            return "soup"
+        case .fastfood:
+            return "fastfood"
+        case .chicken:
+            return "chicken"
+        case .pizza:
+            return "pizza"
+        case .asian:
+            return "asian"
+        case .western:
+            return "western"
+        case .meat:
+            return "meat"
+        case .snackbar:
+            return "snackbar"
         }
     }
 }
