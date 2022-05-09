@@ -12,7 +12,6 @@ import RxSwift
 struct TopSlideBarViewModel {
     private let disposeBag = DisposeBag()
     let cellData: [StoreType]
-    let model = TopSlideBarModel()
     
     // View -> ViewModel
     let itemSelected = PublishRelay<Int>()
@@ -25,7 +24,6 @@ struct TopSlideBarViewModel {
     
     init() {
         cellData = StoreType.allCases
-//        self.cellData = model.cellData
         itemSelected.bind(to: slotChanged).disposed(by: disposeBag)
         scrollPaged.bind(to: slotChanged).disposed(by: disposeBag)
     }

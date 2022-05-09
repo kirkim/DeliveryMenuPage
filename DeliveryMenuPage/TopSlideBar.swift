@@ -14,9 +14,11 @@ class TopSlideBar: UICollectionView {
     private var cellData: [StoreType]?
     private let startPage: Int
     private var flag:Bool = false
+    private var selectedRow: Int
     
     init(startPage: Int) {
         self.startPage = startPage
+        self.selectedRow = startPage
         super.init(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         attribute()
         layout()
@@ -31,10 +33,12 @@ class TopSlideBar: UICollectionView {
         Driver.just(viewModel.cellData)
             .drive(self.rx.items(cellIdentifier: "TopSlideCell", cellType: TopSlideCell.self)) { [weak self] row, data, cell in
                 cell.setData(title: data.title)
-                if (row == self?.startPage && self?.flag == false) {
+                if ((self?.flag == false)) {
+                    self?.scrollToItem(at: IndexPath(row: row, section: 0), at: .centeredHorizontally, animated: false)
+                }
+                if ((row == self?.startPage && self?.flag == false) || (row == self?.selectedRow)) {
                     self?.flag = true
                     cell.isValid(true)
-                    self?.scrollToItem(at: IndexPath(row: row, section: 0), at: .centeredHorizontally, animated: true)
                 }
             }
             .disposed(by: disposeBag)
@@ -53,10 +57,10 @@ class TopSlideBar: UICollectionView {
                 let indexPath = IndexPath(row: row, section: 0)
                 guard let cell = self?.cellForItem(at: indexPath) as? TopSlideCell else { return }
                 cell.isValid(true)
+                self?.selectedRow = row
                 self?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             }
             .disposed(by: disposeBag)
-
     }
     
     private func attribute() {
@@ -83,6 +87,6 @@ extension TopSlideBar: UICollectionViewDelegateFlowLayout {
         guard let slot = self.cellData?[indexPath.row] else { return CGSize.zero }
         var length = slot.title.size(withAttributes: nil).width*2 + 20
         length = length > 150 ? 150 : length
-        return CGSize(width: length , height: CGFloat(self.frame.height)-20)
+        return CGSize(width: length , height: CGFloat(self.frame.height))
     }
 }

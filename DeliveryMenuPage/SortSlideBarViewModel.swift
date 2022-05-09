@@ -12,8 +12,7 @@ import RxSwift
 struct SortSlideBarViewModel {
     private let disposeBag = DisposeBag()
     let cellData: [String]
-    let model = SortSlideBarModel()
-    
+
     // View -> ViewModel
     let itemSelected = PublishRelay<Int>()
     
@@ -21,7 +20,8 @@ struct SortSlideBarViewModel {
     let slotChanged = PublishRelay<Int>()
     
     init() {
-        cellData = model.cellData
+        cellData = SortSlideType.allCases
+            .map { $0.title }
         itemSelected.bind(to: slotChanged).disposed(by: disposeBag)
     }
 }

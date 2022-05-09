@@ -12,7 +12,6 @@ import RxCocoa
 class ContainerStoreListView: UICollectionView {
     private let disposeBag = DisposeBag()
     let nowPage = BehaviorSubject<Int>(value: 0)
-    private let sectionManager = ContainerSectionManager()
     private let startPage: Int
     private var flag:Bool = false
     

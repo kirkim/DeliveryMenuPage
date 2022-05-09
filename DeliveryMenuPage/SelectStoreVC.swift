@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import RxSwift
 import SnapKit
 
 class SelectStoreVC: UIViewController {
     private let topBar: TopSlideBar
     private let sortBar = SortSlideBar()
+    private let disposeBag = DisposeBag()
     private let containerListView: ContainerStoreListView
     
     init(startPage: Int) {
@@ -29,6 +31,9 @@ class SelectStoreVC: UIViewController {
         self.topBar.bind(viewModel.topSlideBarViewModel)
         self.sortBar.bind(viewModel.sortSlideBarViewModel)
         self.containerListView.bind(viewModel.containerListViewModel)
+        viewModel.changeTitle
+            .bind(to: self.rx.title)
+            .disposed(by: disposeBag)
     }
     
     private func attribute() {
@@ -47,7 +52,7 @@ class SelectStoreVC: UIViewController {
         }
         
         sortBar.snp.makeConstraints {
-            $0.top.equalTo(topBar.snp.bottom)
+            $0.top.equalTo(topBar.snp.bottom).offset(1)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(50)
         }

@@ -58,7 +58,7 @@ class SortSlideBar: UICollectionView {
         self.register(SortSlideCell.self, forCellWithReuseIdentifier: "SortSlideCell")
         self.delegate = self
         self.showsHorizontalScrollIndicator = false
-        self.backgroundColor = .yellow
+        
     }
     
     private func layout() {

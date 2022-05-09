@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 struct SelectStoreViewModel {
     let topSlideBarViewModel = TopSlideBarViewModel()
@@ -14,10 +15,20 @@ struct SelectStoreViewModel {
     let containerListViewModel = ContainerStoreListViewModel()
     private let disposeBag = DisposeBag()
     
+    // ViewModel -> View
+    let changeTitle = PublishRelay<String>()
+    
     init() {
-        topSlideBarViewModel.slotChanged
+        let slotChanged = topSlideBarViewModel.slotChanged.share()
+        slotChanged
             .bind(to: containerListViewModel.slotChanged)
             .disposed(by: disposeBag)
+        
+        slotChanged
+            .map { StoreType.allCases[$0].title }
+            .bind(to: changeTitle)
+            .disposed(by: disposeBag)
+        
         
         containerListViewModel.scrollPaged
             .bind(to: topSlideBarViewModel.scrollPaged)
