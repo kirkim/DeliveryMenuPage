@@ -32,6 +32,7 @@ class ContainerStoreListView: UICollectionView {
     func bind(_ viewModel: ContainerStoreListViewModel) {
         Driver.just(viewModel.cellData)
             .drive(self.rx.items(cellIdentifier: "ContainerStoreListViewCell", cellType: ContainerStoreListViewCell.self)) { row, data, cell in
+                cell.bind(viewModel.storeListViewModel)
                 StoreListHttpManager.shared.load(storeType: data) { data in
                     cell.setData(data: data)
                     if (self.flag == false) {

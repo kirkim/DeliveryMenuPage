@@ -21,19 +21,25 @@ class SortSlideCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        self.titleLabel.textColor = .systemGray4
+        self.backgroundColor = .clear
+    }
+    
     func isValid(_ isValid: Bool) {
         if (isValid) {
-            self.backgroundColor = .systemMint
-            self.titleLabel.textColor = .white
+            self.backgroundColor = .brown.withAlphaComponent(0.2)
+            self.titleLabel.textColor = .brown
         } else {
             self.backgroundColor = .clear
-            self.titleLabel.textColor = .black
+            self.titleLabel.textColor = .systemGray2
         }
     }
     
     private func attribute() {
         self.titleLabel.textAlignment = .center
-        self.titleLabel.textColor = .black
+        self.titleLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        self.titleLabel.textColor = .systemGray2
         self.layer.cornerRadius = self.frame.height/2
     }
     
@@ -54,7 +60,7 @@ class SortSlideCell: UICollectionViewCell {
 }
 
 class SortSlidePaddingLabel: UILabel {
-    private var padding = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 10.0)
+    private var padding = UIEdgeInsets(top: 0, left: 5.0, bottom: 0, right: 5.0)
 
     convenience init(padding: UIEdgeInsets) {
         self.init()

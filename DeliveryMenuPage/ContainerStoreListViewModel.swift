@@ -10,6 +10,7 @@ import RxCocoa
 
 struct ContainerStoreListViewModel {
     let cellData: [StoreType]
+    let storeListViewModel = StoreListViewModel()
     
     // View -> ViewModel
     let scrollPaged = PublishRelay<Int>()
@@ -17,8 +18,11 @@ struct ContainerStoreListViewModel {
     // TopSlideView -> ViewModel -> View
     let slotChanged = PublishRelay<Int>()
     
+    // ViewModel -> ParentViewModel
+    let presentStoreDetailVC: Signal<String>
+    
     init() {
         self.cellData = StoreType.allCases
-        
+        presentStoreDetailVC = storeListViewModel.presentStoreDetailVC.asSignal()
     }
 }

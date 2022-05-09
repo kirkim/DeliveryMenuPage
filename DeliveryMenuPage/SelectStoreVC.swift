@@ -7,18 +7,22 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import SnapKit
 
 class SelectStoreVC: UIViewController {
     private let topBar: TopSlideBar
+    private let underline = UIView()
     private let sortBar = SortSlideBar()
     private let disposeBag = DisposeBag()
     private let containerListView: ContainerStoreListView
+    private let httpModel = MagnetBarHttpModel.shared
     
     init(startPage: Int) {
         self.topBar = TopSlideBar(startPage: startPage)
         self.containerListView = ContainerStoreListView(startPage: startPage)
         super.init(nibName: nil, bundle: nil)
+        self.title = StoreType.allCases[startPage].title
         attribute()
         layout()
     }
@@ -34,14 +38,28 @@ class SelectStoreVC: UIViewController {
         viewModel.changeTitle
             .bind(to: self.rx.title)
             .disposed(by: disposeBag)
+        
+        viewModel.presentStoreDetailVC
+            .emit { storeCode in
+                self.httpModel.loadData(code: storeCode) {
+                    DispatchQueue.main.async {
+                        let vc = MagnetBarView()
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+
+            }
+            .disposed(by: disposeBag)
     }
     
     private func attribute() {
+        
         self.view.backgroundColor = .white
+        underline.backgroundColor = .systemGray4
     }
     
     private func layout() {
-        [containerListView, topBar, sortBar].forEach {
+        [containerListView, topBar, underline, sortBar].forEach {
             self.view.addSubview($0)
         }
         
@@ -51,8 +69,14 @@ class SelectStoreVC: UIViewController {
             $0.height.equalTo(50)
         }
         
+        underline.snp.makeConstraints {
+            $0.top.equalTo(topBar.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1) // underline 두깨
+        }
+        
         sortBar.snp.makeConstraints {
-            $0.top.equalTo(topBar.snp.bottom).offset(1)
+            $0.top.equalTo(underline.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(50)
         }

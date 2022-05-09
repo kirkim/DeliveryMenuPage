@@ -10,30 +10,30 @@ import UIKit
 class ContainerStoreListViewCell: UICollectionViewCell {
     private var flag:Bool = false
     private let storeListView = StoreListView()
-    private let storeListViewModel = StoreListViewModel()
+    private let storeListModel = StoreListModel()
+//    private let storeListViewModel = StoreListViewModel()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        attribute()
         layout()
-        bind()
+        setModel()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setModel() {
+        self.storeListView.setModel(storeListModel)
+    }
+    
     func setData(data: [StoreListSection]) {
-        self.storeListViewModel.updateData(data: data)
+        self.storeListModel.updateData(data: data)
     }
     
-    private func bind() {
-        self.storeListView.bind(storeListViewModel)
-    }
-    
-    private func attribute() {
-        
+    func bind(_ viewModel: StoreListViewModel) {
+        self.storeListView.bind(viewModel)
     }
     
     private func layout() {

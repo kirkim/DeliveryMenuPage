@@ -64,7 +64,6 @@ class TopSlideBar: UICollectionView {
     }
     
     private func attribute() {
-        self.backgroundColor = .brown
         self.register(TopSlideCell.self, forCellWithReuseIdentifier: "TopSlideCell")
         self.delegate = self
         self.showsHorizontalScrollIndicator = false
@@ -74,18 +73,17 @@ class TopSlideBar: UICollectionView {
         if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
             layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-            layout.minimumInteritemSpacing = 10
+            layout.minimumInteritemSpacing = 20
             layout.minimumLineSpacing = 10
         }
     }
 }
 
-
 //MARK: - TopSlideBar: UICollectionViewDelegateFlowLayout
 extension TopSlideBar: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let slot = self.cellData?[indexPath.row] else { return CGSize.zero }
-        var length = slot.title.size(withAttributes: nil).width*2 + 20
+        var length = slot.title.size(withAttributes: nil).width*1.5 + 20
         length = length > 150 ? 150 : length
         return CGSize(width: length , height: CGFloat(self.frame.height))
     }

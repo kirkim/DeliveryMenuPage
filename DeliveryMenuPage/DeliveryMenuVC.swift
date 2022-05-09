@@ -51,6 +51,8 @@ class DeliveryMenuVC: UIViewController {
     
     private func attribute() {
         self.view.backgroundColor = .white
+        self.navigationItem.backButtonTitle = ""
+
         self.collectionView.collectionViewLayout = sectionManager.createLayout()
         self.collectionView.register(cellType: DeliveryMenuBannerCell.self)
         self.collectionView.register(cellType: DeliveryMenuSpecialCell.self)

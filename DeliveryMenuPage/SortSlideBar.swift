@@ -12,9 +12,14 @@ import RxSwift
 class SortSlideBar: UICollectionView {
     private let disposeBag = DisposeBag()
     private var cellData: [String]?
-    private let startSort: SortSlideType = .basic
+    private let startSort: SortSlideType
+    private var flag:Bool = false
+    private var selectedRow: Int
     
     init() {
+        let startIndex = 2 // "기본순"
+        startSort = SortSlideType.allCases[startIndex]
+        selectedRow = startIndex
         super.init(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         attribute()
         layout()
@@ -27,11 +32,14 @@ class SortSlideBar: UICollectionView {
     func bind(_ viewModel: SortSlideBarViewModel) {
         self.cellData = viewModel.cellData
         Driver.just(viewModel.cellData)
-            .drive(self.rx.items(cellIdentifier: "SortSlideCell", cellType: SortSlideCell.self)) { row, data, cell in
+            .drive(self.rx.items(cellIdentifier: "SortSlideCell", cellType: SortSlideCell.self)) { [weak self] row, data, cell in
                 cell.setData(title: data)
-                if (SortSlideType.allCases[row] == self.startSort) {
+                if ((self?.flag == false)) {
+                    self?.scrollToItem(at: IndexPath(row: 2, section: 0), at: .centeredHorizontally, animated: true)
+                }
+                if ((SortSlideType.allCases[row] == self?.startSort && self?.flag == false) || (row == self?.selectedRow)) {
+                    self?.flag = true
                     cell.isValid(true)
-                    self.scrollToItem(at: IndexPath(row: row, section: 0), at: .centeredHorizontally, animated: true)
                 }
             }
             .disposed(by: disposeBag)
@@ -49,6 +57,7 @@ class SortSlideBar: UICollectionView {
                 let indexPath = IndexPath(row: row, section: 0)
                 guard let cell = self?.cellForItem(at: indexPath) as? SortSlideCell else { return }
                 cell.isValid(true)
+                self?.selectedRow = row
                 self?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             }
             .disposed(by: disposeBag)
@@ -75,8 +84,8 @@ class SortSlideBar: UICollectionView {
 extension SortSlideBar: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let slot = self.cellData?[indexPath.row] else { return CGSize.zero }
-        var length = slot.size(withAttributes: nil).width*2 + 20
+        var length = slot.size(withAttributes: nil).width*1.5 + 10
         length = length > 150 ? 150 : length
-        return CGSize(width: length , height: CGFloat(self.frame.height)-20)
+        return CGSize(width: length , height: CGFloat(self.frame.height)-14)
     }
 }

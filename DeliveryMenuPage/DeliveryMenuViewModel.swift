@@ -27,7 +27,8 @@ class DeliveryMenuViewModel {
     init(_ model: DeliveryMenuModel = DeliveryMenuModel()) {
         self.data = model.data
         
-        itemSelected.map { [weak self] indexPath in
+        itemSelected.filter { $0.section == 2 }
+        .map { [weak self] indexPath in
             let vc = SelectStoreVC(startPage: indexPath.row)
             vc.bind((self?.deliveryListViewModel)!)
             return vc

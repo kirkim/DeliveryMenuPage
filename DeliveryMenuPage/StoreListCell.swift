@@ -10,6 +10,7 @@ import SnapKit
 import Reusable
 
 class StoreListCell: UICollectionViewCell, Reusable {
+    private var storeCode: String?
     private let thumbnailImageView = UIImageView()
     private let titleLabel = UILabel()
     
@@ -17,27 +18,39 @@ class StoreListCell: UICollectionViewCell, Reusable {
     private let averageRatingLabel = UILabel()
     private let reviewCountLabel = UILabel()
     
-    
     private let menuLabel = UILabel()
     private let priceLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout()
+        attribute()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func attribute() {
+        self.menuLabel.textColor = .systemGray
+        self.priceLabel.textColor = .systemGray
+        
+        self.titleLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        self.averageRatingLabel.font = .systemFont(ofSize: 15, weight: .medium)
+        [reviewCountLabel, starLabel, menuLabel, priceLabel].forEach {
+            $0.font = .systemFont(ofSize: 15)
+        }
+    }
+    
     func setData(data: SummaryStoreItem) {
+        self.storeCode = data.storeCode
         self.thumbnailImageView.image = UIImage(systemName: "circle")
         self.titleLabel.text = data.storeName
         
         self.starLabel.text = "★"
         self.starLabel.textColor = .systemYellow
         self.averageRatingLabel.text = "\(floor(data.averageRating*100)/100)"
-        self.averageRatingLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        
         self.reviewCountLabel.text = parsingReviewCount(data.reviewCount)
         self.menuLabel.text = data.twoMainMenuName[0] + ", " + data.twoMainMenuName[1]
         
@@ -61,7 +74,7 @@ class StoreListCell: UICollectionViewCell, Reusable {
             self.addSubview($0)
         }
         
-        let padding = 20.0
+        let padding = 10.0
         let spaceByThumbnail = 10.0
         let lineSpace = 8.0
         

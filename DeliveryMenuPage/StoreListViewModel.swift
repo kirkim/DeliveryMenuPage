@@ -10,31 +10,10 @@ import RxDataSources
 import RxCocoa
 
 struct StoreListViewModel {
-    let cellData = PublishRelay<[StoreListSection]>()
+    // ViewModel -> ParentViewModel
+    let presentStoreDetailVC = PublishRelay<String>()
     
     init() {
-        
-    }
-    
-    func updateData(data: [StoreListSection]) {
-        cellData.accept(data)
-    }
-    
-    func dataSource() -> RxCollectionViewSectionedReloadDataSource<StoreListSection> {
-        let dataSource = RxCollectionViewSectionedReloadDataSource<StoreListSection>(
-            configureCell: { dataSource, collectionView, indexPath, item in
-                let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: StoreListCell.self)
-                cell.setData(data: item)
-                return cell
-            })
-        
-        // Header
-//        dataSource.configureSupplementaryView = {(dataSource, collectionView, kind, indexPath) -> UICollectionReusableView in
-//            switch dataSource[indexPath.section] {
-//
-//            }
-//        }
-        return dataSource
-    }
 
+    }
 }

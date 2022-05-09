@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 
 class TopSlideCell: UICollectionViewCell {
-    let titleLabel = TopSlidePaddingLabel()
+    private let titleLabel = TopSlidePaddingLabel()
+    private let underline = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,28 +23,30 @@ class TopSlideCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        self.backgroundColor = .clear
-        self.titleLabel.textColor = .black
+        self.titleLabel.textColor = .systemGray4
+        self.underline.backgroundColor = .clear
     }
     
     private func attribute() {
         self.titleLabel.textAlignment = .center
-        self.titleLabel.textColor = .black
+        self.titleLabel.textColor = .systemGray2
         self.layer.cornerRadius = self.frame.height/2
+        self.titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
+        self.underline.backgroundColor = .clear
     }
     
     func isValid(_ isValid: Bool) {
         if (isValid) {
-            self.backgroundColor = .systemMint
-            self.titleLabel.textColor = .white
-        } else {
-            self.backgroundColor = .clear
             self.titleLabel.textColor = .black
+            self.underline.backgroundColor = .black
+        } else {
+            self.titleLabel.textColor = .systemGray2
+            self.underline.backgroundColor = .clear
         }
     }
     
     private func layout() {
-        [titleLabel].forEach {
+        [titleLabel, underline].forEach {
             self.addSubview($0)
         }
         
@@ -51,6 +54,10 @@ class TopSlideCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
+        underline.snp.makeConstraints {
+            $0.leading.bottom.trailing.equalToSuperview()
+            $0.height.equalTo(2)
+        }
     }
     
     func setData(title: String) {
@@ -59,7 +66,7 @@ class TopSlideCell: UICollectionViewCell {
 }
 
 class TopSlidePaddingLabel: UILabel {
-    private var padding = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 10.0)
+    private var padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
     convenience init(padding: UIEdgeInsets) {
         self.init()
