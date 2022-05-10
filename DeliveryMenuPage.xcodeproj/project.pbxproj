@@ -255,63 +255,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FE8B07DF2826A36C0046D82F /* TopSlideBar */ = {
-			isa = PBXGroup;
-			children = (
-				FEF5D0242825127A0058D52C /* TopSlideBar.swift */,
-				FEF5D026282512E90058D52C /* TopSlideBarViewModel.swift */,
-				FEF5D02C2825667C0058D52C /* Cell */,
-			);
-			name = TopSlideBar;
-			sourceTree = "<group>";
-		};
-		FE8B07E02826A3790046D82F /* SortSlideBar */ = {
-			isa = PBXGroup;
-			children = (
-				FE8B07E12826A3950046D82F /* SortSlideBar.swift */,
-				FE8B07E32826AAB10046D82F /* SortSlideBarViewModel.swift */,
-				FE8B07EA2826AD310046D82F /* Cell */,
-			);
-			name = SortSlideBar;
-			sourceTree = "<group>";
-		};
-		FE8B07EA2826AD310046D82F /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				FE8B07EB2826AD400046D82F /* SortSlideCell.swift */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		FE8B07F02826C3510046D82F /* StoreListView */ = {
-			isa = PBXGroup;
-			children = (
-				FE8B07F12826C3C90046D82F /* StoreListView.swift */,
-				FEBFE072282758BE007BC64D /* StoreListViewModel.swift */,
-				FEEAB2022829530F0029B898 /* StoreListModel.swift */,
-				FE997C202827ECE5009F24CF /* StoreListSectionManager.swift */,
-				FEBFE07728275E6A007BC64D /* SectionModel */,
-				FEBFE07428275921007BC64D /* Cell */,
-			);
-			name = StoreListView;
-			sourceTree = "<group>";
-		};
-		FEBFE07428275921007BC64D /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				FEBFE0752827592E007BC64D /* StoreListCell.swift */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		FEBFE07728275E6A007BC64D /* SectionModel */ = {
-			isa = PBXGroup;
-			children = (
-				FEBFE07828275E85007BC64D /* StoreListSectionModel.swift */,
-			);
-			name = SectionModel;
-			sourceTree = "<group>";
-		};
 		FEBFE07E2827618C007BC64D /* Http */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,41 +264,13 @@
 			path = Http;
 			sourceTree = "<group>";
 		};
-		FEBFE08128277A14007BC64D /* ContainerStoreListView */ = {
-			isa = PBXGroup;
-			children = (
-				FEBFE08228277A51007BC64D /* ContainerStoreListView.swift */,
-				FEBFE08428277A95007BC64D /* ContainerStoreListViewModel.swift */,
-				FEBFE07A28276143007BC64D /* StoreListHttpManager.swift */,
-				FEBFE08628277CDD007BC64D /* Cell */,
-			);
-			name = ContainerStoreListView;
-			sourceTree = "<group>";
-		};
-		FEBFE08628277CDD007BC64D /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				FEBFE08828277D11007BC64D /* ContainerStoreListViewCell.swift */,
-				FEBFE08728277CF0007BC64D /* SubComponents */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		FEBFE08728277CF0007BC64D /* SubComponents */ = {
-			isa = PBXGroup;
-			children = (
-				FE8B07F02826C3510046D82F /* StoreListView */,
-			);
-			name = SubComponents;
-			sourceTree = "<group>";
-		};
-		FEEAB16128294F610029B898 /* MagnetBarView */ = {
+		FEEAB16128294F610029B898 /* DeliveryDetailPage */ = {
 			isa = PBXGroup;
 			children = (
 				FEEAB16228294F610029B898 /* Present */,
 				FEEAB1BF28294F610029B898 /* Extension */,
 			);
-			path = MagnetBarView;
+			path = DeliveryDetailPage;
 			sourceTree = "<group>";
 		};
 		FEEAB16228294F610029B898 /* Present */ = {
@@ -701,9 +616,9 @@
 		FEF3132B2824B94C004F764E /* DeliveryMenuPage */ = {
 			isa = PBXGroup;
 			children = (
+				FEFA1E992829F7650088BEEB /* DeliveryListPage */,
 				FEF313502824BAC9004F764E /* BeminBannerView */,
-				FEF313402824B995004F764E /* MainPage */,
-				FEEAB16128294F610029B898 /* MagnetBarView */,
+				FEEAB16128294F610029B898 /* DeliveryDetailPage */,
 				FEBFE07E2827618C007BC64D /* Http */,
 				FEF3132C2824B94C004F764E /* AppDelegate.swift */,
 				FEF3132E2824B94C004F764E /* SceneDelegate.swift */,
@@ -713,21 +628,6 @@
 				FEF313852824CC16004F764E /* TestVC.swift */,
 			);
 			path = DeliveryMenuPage;
-			sourceTree = "<group>";
-		};
-		FEF313402824B995004F764E /* MainPage */ = {
-			isa = PBXGroup;
-			children = (
-				FEF313412824B9C5004F764E /* DeliveryMenuVC.swift */,
-				FEF3136F2824BB23004F764E /* DeliveryMenuViewModel.swift */,
-				FEF5D02A28255D7D0058D52C /* DeliveryMenuModel.swift */,
-				FEF313712824BBBE004F764E /* DeliveryMenuSectionManager.swift */,
-				FEF313732824BCC1004F764E /* Cell */,
-				FEF313762824BF8D004F764E /* SectionModel */,
-				FEF313792824C15E004F764E /* Entities */,
-				FEF5D0202825118C0058D52C /* PresentPage */,
-			);
-			name = MainPage;
 			sourceTree = "<group>";
 		};
 		FEF313502824BAC9004F764E /* BeminBannerView */ = {
@@ -812,59 +712,167 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		FEF313732824BCC1004F764E /* Cell */ = {
+		FEFA1E992829F7650088BEEB /* DeliveryListPage */ = {
+			isa = PBXGroup;
+			children = (
+				FEF313412824B9C5004F764E /* DeliveryMenuVC.swift */,
+				FEF3136F2824BB23004F764E /* DeliveryMenuViewModel.swift */,
+				FEF5D02A28255D7D0058D52C /* DeliveryMenuModel.swift */,
+				FEF313712824BBBE004F764E /* DeliveryMenuSectionManager.swift */,
+				FEFA1E9A2829F77E0088BEEB /* Cell */,
+				FEFA1E9B2829F7980088BEEB /* SectionModel */,
+				FEFA1E9C2829F7B30088BEEB /* Entities */,
+				FEFA1E9D2829F7D40088BEEB /* PresentPage */,
+			);
+			path = DeliveryListPage;
+			sourceTree = "<group>";
+		};
+		FEFA1E9A2829F77E0088BEEB /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				FEF3137C2824C3DC004F764E /* DeliveryMenuBannerCell.swift */,
 				FEF313812824C848004F764E /* DeliveryMenuSpecialCell.swift */,
 				FEF313832824C99A004F764E /* DeliveryMenuBasicCell.swift */,
 			);
-			name = Cell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
-		FEF313762824BF8D004F764E /* SectionModel */ = {
+		FEFA1E9B2829F7980088BEEB /* SectionModel */ = {
 			isa = PBXGroup;
 			children = (
 				FEF313772824BFAC004F764E /* DeliveryMenuSectionModel.swift */,
 			);
-			name = SectionModel;
+			path = SectionModel;
 			sourceTree = "<group>";
 		};
-		FEF313792824C15E004F764E /* Entities */ = {
+		FEFA1E9C2829F7B30088BEEB /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				FEF3137A2824C170004F764E /* StoreType.swift */,
 				FE8B07E62826AB940046D82F /* SortSlideType.swift */,
 			);
-			name = Entities;
+			path = Entities;
 			sourceTree = "<group>";
 		};
-		FEF5D0202825118C0058D52C /* PresentPage */ = {
+		FEFA1E9D2829F7D40088BEEB /* PresentPage */ = {
+			isa = PBXGroup;
+			children = (
+				FEFA1E9E2829F81F0088BEEB /* SubComponents */,
+			);
+			path = PresentPage;
+			sourceTree = "<group>";
+		};
+		FEFA1E9E2829F81F0088BEEB /* SubComponents */ = {
 			isa = PBXGroup;
 			children = (
 				FEF5D021282511F50058D52C /* SelectStoreVC.swift */,
 				FEF5D02828255B1C0058D52C /* SelectStoreViewModel.swift */,
-				FEF5D023282512640058D52C /* SubComponents */,
+				FEFA1EA32829F8830088BEEB /* ContainerStoreListView */,
+				FEFA1EA12829F85F0088BEEB /* SortSlideBar */,
+				FEFA1E9F2829F8310088BEEB /* TopSlideBar */,
 			);
-			name = PresentPage;
+			path = SubComponents;
 			sourceTree = "<group>";
 		};
-		FEF5D023282512640058D52C /* SubComponents */ = {
+		FEFA1E9F2829F8310088BEEB /* TopSlideBar */ = {
 			isa = PBXGroup;
 			children = (
-				FEBFE08128277A14007BC64D /* ContainerStoreListView */,
-				FE8B07E02826A3790046D82F /* SortSlideBar */,
-				FE8B07DF2826A36C0046D82F /* TopSlideBar */,
+				FEF5D0242825127A0058D52C /* TopSlideBar.swift */,
+				FEF5D026282512E90058D52C /* TopSlideBarViewModel.swift */,
+				FEFA1EA02829F8410088BEEB /* Cell */,
 			);
-			name = SubComponents;
+			path = TopSlideBar;
 			sourceTree = "<group>";
 		};
-		FEF5D02C2825667C0058D52C /* Cell */ = {
+		FEFA1EA02829F8410088BEEB /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				FEF5D02D282566A10058D52C /* TopSlideCell.swift */,
 			);
-			name = Cell;
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FEFA1EA12829F85F0088BEEB /* SortSlideBar */ = {
+			isa = PBXGroup;
+			children = (
+				FE8B07E12826A3950046D82F /* SortSlideBar.swift */,
+				FE8B07E32826AAB10046D82F /* SortSlideBarViewModel.swift */,
+				FEFA1EA22829F86D0088BEEB /* Cell */,
+			);
+			path = SortSlideBar;
+			sourceTree = "<group>";
+		};
+		FEFA1EA22829F86D0088BEEB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FE8B07EB2826AD400046D82F /* SortSlideCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FEFA1EA32829F8830088BEEB /* ContainerStoreListView */ = {
+			isa = PBXGroup;
+			children = (
+				FEFA1EA42829F8920088BEEB /* Cell */,
+			);
+			path = ContainerStoreListView;
+			sourceTree = "<group>";
+		};
+		FEFA1EA42829F8920088BEEB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FEFA1EA52829F8970088BEEB /* SubComponents */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FEFA1EA52829F8970088BEEB /* SubComponents */ = {
+			isa = PBXGroup;
+			children = (
+				FEBFE08228277A51007BC64D /* ContainerStoreListView.swift */,
+				FEBFE08428277A95007BC64D /* ContainerStoreListViewModel.swift */,
+				FEBFE07A28276143007BC64D /* StoreListHttpManager.swift */,
+				FEFA1EA92829F8E20088BEEB /* Cell */,
+				FEFA1EA62829F8A30088BEEB /* StoreListView */,
+			);
+			path = SubComponents;
+			sourceTree = "<group>";
+		};
+		FEFA1EA62829F8A30088BEEB /* StoreListView */ = {
+			isa = PBXGroup;
+			children = (
+				FE8B07F12826C3C90046D82F /* StoreListView.swift */,
+				FEBFE072282758BE007BC64D /* StoreListViewModel.swift */,
+				FEEAB2022829530F0029B898 /* StoreListModel.swift */,
+				FE997C202827ECE5009F24CF /* StoreListSectionManager.swift */,
+				FEFA1EA82829F8BB0088BEEB /* SectionModel */,
+				FEFA1EA72829F8B10088BEEB /* Cell */,
+			);
+			path = StoreListView;
+			sourceTree = "<group>";
+		};
+		FEFA1EA72829F8B10088BEEB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FEBFE0752827592E007BC64D /* StoreListCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FEFA1EA82829F8BB0088BEEB /* SectionModel */ = {
+			isa = PBXGroup;
+			children = (
+				FEBFE07828275E85007BC64D /* StoreListSectionModel.swift */,
+			);
+			path = SectionModel;
+			sourceTree = "<group>";
+		};
+		FEFA1EA92829F8E20088BEEB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FEBFE08828277D11007BC64D /* ContainerStoreListViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
